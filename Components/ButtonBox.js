@@ -2,33 +2,34 @@ import React from 'react'
 import {View, TouchableHighlight, Text, StyleSheet} from 'react-native'
 
 
-export default class ButtonBox extends React.Component {
+export default class ButtonBox extends React.Component { // The two buttons interacting with each other are defined here
 
   constructor(props) {
     super(props)
     this.state = {
       lcol : 'yellow',
       rcol : 'white',
-      cours : 'Kevin est en cours'
+      cours : 'Kevin est en cours',
     }
   }
 
   _lButton() {
-      this.setState({
-        lcol : 'yellow',
-        rcol : 'white',
-        cours : 'Kevin est en cours'
-      })
+    this.props.kevinHandler(true);
+    this.setState({
+      lcol : 'yellow',
+      rcol : 'white',
+      cours : 'Kevin est en cours'
+    })
   }
 
   _rButton() {
+    this.props.kevinHandler(false);
     this.setState({
       lcol : 'white',
       rcol : 'yellow',
       cours : "Kevin n'a pas cours"
     })
   }
-
 
   render() {
       return (
